@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    container_name: test-app
+    image: docker-hub.obit.ru/base/php:7.4.26-fpm
+    build: .
+    volumes:
+      - ./app:/application
+
+  nginx:
+    container_name: test-nginx
+    image: nginx:latest
+    ports:
+      - "9191:80"
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/conf.d/default.conf
+      - ./app:/application
+    links:
+      - app
+
+networks:
+  default:
+    external:
+      name: dev
