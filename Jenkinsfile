@@ -1,4 +1,5 @@
 pipeline {
+    agent { label 'master' }
     environment {
         TEST_ENV_VAR = 1
         TEST_SECOND = "test"
