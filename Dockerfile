@@ -8,7 +8,11 @@ COPY ./app /application
 #  COMPOSER_DISABLE_XDEBUG_WARN=1 \
 #  PATH="/root/.composer/vendor/bin:$PATH"
 
-RUN cd /application
+RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
+  && tar xzvf docker-17.04.0-ce.tgz \
+  && mv docker/docker /usr/local/bin \
+  && rm -r docker docker-17.04.0-ce.tgz \
+  && cd /application
 #    && composer install  \
 #    && chmod -R 777 /application/var \
 #    && rm -rf /application/var/cache
