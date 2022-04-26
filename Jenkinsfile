@@ -14,12 +14,6 @@ pipeline {
             }
 
         }
-
-        stage('Display Env') {
-            steps {
-//                 sh '''env'''
-            }
-        }
         stage("Build") {
             steps {
                 script {
