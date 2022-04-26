@@ -10,6 +10,7 @@ pipeline {
             steps {
                 script {
                     env.TEST_ENV = "aswfqf"
+                    sh "docker version" // DOCKER_CERT_PATH is automatically picked up by the Docker client
                 }
             }
 
